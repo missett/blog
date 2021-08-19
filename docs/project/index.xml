@@ -2,17 +2,17 @@
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
     <title>Projects on My New Hugo Site</title>
-    <link>http://example.org/project/</link>
+    <link>https://missett.github.io/project/</link>
     <description>Recent content in Projects on My New Hugo Site</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Tue, 18 Nov 2014 02:13:50 +0000</lastBuildDate><atom:link href="http://example.org/project/index.xml" rel="self" type="application/rss+xml" />
+    <lastBuildDate>Tue, 18 Nov 2014 02:13:50 +0000</lastBuildDate><atom:link href="https://missett.github.io/project/index.xml" rel="self" type="application/rss+xml" />
     <item>
       <title>My awesome project</title>
-      <link>http://example.org/project/my-awesome-project/</link>
+      <link>https://missett.github.io/project/my-awesome-project/</link>
       <pubDate>Tue, 18 Nov 2014 02:13:50 +0000</pubDate>
       
-      <guid>http://example.org/project/my-awesome-project/</guid>
+      <guid>https://missett.github.io/project/my-awesome-project/</guid>
       <description>About project Aenean ipsum justo, semper eu nisl ut, pretium tincidunt sem. Praesent et diam sit amet lacus lobortis dictum a id lacus. Quisque hendrerit sit amet turpis eu varius. Ut id lorem ac felis ultrices tincidunt. Pellentesque consequat arcu ac fringilla imperdiet. Phasellus pellentesque, sapien non pulvinar blandit, sapien ante aliquet felis, vel porttitor sapien ante in lacus. Fusce non urna aliquet, malesuada nibh vel, luctus urna. Phasellus ut lacus molestie, varius purus quis, malesuada lorem.</description>
     </item>
     

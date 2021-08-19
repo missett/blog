@@ -2,67 +2,67 @@
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
   xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
-    <loc>http://example.org/page/about/</loc>
+    <loc>https://missett.github.io/page/about/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/page/contact/</loc>
+    <loc>https://missett.github.io/page/contact/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/</loc>
+    <loc>https://missett.github.io/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/page/</loc>
+    <loc>https://missett.github.io/page/</loc>
     <lastmod>2015-04-03T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/project/my-awesome-project/</loc>
+    <loc>https://missett.github.io/project/my-awesome-project/</loc>
     <lastmod>2014-11-18T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/project/</loc>
+    <loc>https://missett.github.io/project/</loc>
     <lastmod>2014-11-18T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/creating-a-new-theme/</loc>
+    <loc>https://missett.github.io/post/creating-a-new-theme/</loc>
     <lastmod>2014-09-28T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/</loc>
+    <loc>https://missett.github.io/post/</loc>
     <lastmod>2014-09-28T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/goisforlovers/</loc>
+    <loc>https://missett.github.io/post/goisforlovers/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/development/</loc>
+    <loc>https://missett.github.io/tags/development/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/go/</loc>
+    <loc>https://missett.github.io/tags/go/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/golang/</loc>
+    <loc>https://missett.github.io/tags/golang/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/migrate-from-jekyll/</loc>
+    <loc>https://missett.github.io/post/migrate-from-jekyll/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/</loc>
+    <loc>https://missett.github.io/tags/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/templates/</loc>
+    <loc>https://missett.github.io/tags/templates/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/themes/</loc>
+    <loc>https://missett.github.io/tags/themes/</loc>
     <lastmod>2014-04-02T02:13:50+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/categories/</loc>
+    <loc>https://missett.github.io/categories/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/categories/development/</loc>
+    <loc>https://missett.github.io/categories/development/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/post/hugoisforlovers/</loc>
+    <loc>https://missett.github.io/post/hugoisforlovers/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/categories/golang/</loc>
+    <loc>https://missett.github.io/categories/golang/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url><url>
-    <loc>http://example.org/tags/hugo/</loc>
+    <loc>https://missett.github.io/tags/hugo/</loc>
     <lastmod>2014-04-02T00:00:00+00:00</lastmod>
   </url>
 </urlset>
