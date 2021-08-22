@@ -1,4 +1,0 @@
-baseURL = "https://missett.github.io/"
-languageCode = "en-us"
-title = "My New Hugo Site"
-publishDir = "build"
