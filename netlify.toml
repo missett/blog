@@ -1,13 +1,13 @@
 [build]
   base = "src"
   publish = "public"
-  command = "hugo --gc --minify --baseURL https://frosty-heisenberg-ea476c.netlify.app/"
+  command = "hugo --gc --minify --baseURL $DEPLOY_PRIME_URL/"
 
 [context.production.environment]
   HUGO_VERSION = "0.85.0"
 
 [context.deploy-preview]
-  command = "hugo --gc --minify --baseURL https://frosty-heisenberg-ea476c.netlify.app/"
+  command = "hugo --gc --minify --baseURL $DEPLOY_PRIME_URL/"
 
 [context.deploy-preview.environment]
   HUGO_VERSION = "0.85.0"
