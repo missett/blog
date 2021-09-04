@@ -1,6 +1,27 @@
 baseURL = "https://frosty-heisenberg-ea476c.netlify.app/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "missett.io"
+
+[Author]
+    name = "Ryan Missett"
+    profile = "https://github.com/missett"
+
+[Taxonomies]
+    tag = "tags"
+
+[Params]
+    intro = true
+    headline = "missett.io"
+    github = "https://github.com/missett"
+    twitter = "https://twitter.com/missett"
+    opengraph = true
+    shareTwitter = true
+    shareFacebook = true
+    shareGooglePlus = true
+    dateFormat = "Mon, Jan 2, 2006"
+
+[Permalinks]
+    post = "/:year/:month/:day/:filename/"
 
 [module]
   [[module.imports]]
