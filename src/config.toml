@@ -16,8 +16,6 @@ title = "missett.io"
     twitter = "https://twitter.com/missett"
     opengraph = true
     shareTwitter = true
-    shareFacebook = true
-    shareGooglePlus = true
     dateFormat = "Mon, Jan 2, 2006"
 
 [Permalinks]
