@@ -1,5 +1,5 @@
 [build]
-  base = "src"
+  base = "static/src"
   publish = "public"
   command = "hugo --gc --minify --baseURL $DEPLOY_PRIME_URL/"
 
