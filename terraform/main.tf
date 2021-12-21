@@ -33,21 +33,21 @@ locals {
 
 resource "aws_s3_bucket" "ryanmissett_blog_frontend" {
   bucket = "ryanmissett-blog-frontend"
-  acl = "public-read"
-  
+  acl    = "public-read"
+
   website {
     index_document = "index.html"
-    error_document = "404.html" 
+    error_document = "404.html"
   }
 }
 
 resource "aws_s3_bucket_object" "ryanmissett_blog_frontend" {
-  for_each = fileset("${path.module}/../static/src/public", "**")
-  bucket = aws_s3_bucket.ryanmissett_blog_frontend.id
-  key = each.value
-  source = "${path.module}/../static/src/public/${each.value}"
-  acl = "public-read"
+  for_each     = fileset("${path.module}/../static/src/public", "**")
+  bucket       = aws_s3_bucket.ryanmissett_blog_frontend.id
+  key          = each.value
+  source       = "${path.module}/../static/src/public/${each.value}"
+  acl          = "public-read"
   content_type = lookup(local.content_types, regex("\\.[^.]+$", each.value), null)
-  etag = filemd5("${path.module}/../static/src/public/${each.value}")
+  etag         = filemd5("${path.module}/../static/src/public/${each.value}")
 }
 
