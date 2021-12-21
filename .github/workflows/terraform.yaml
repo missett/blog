@@ -32,9 +32,9 @@ jobs:
       run: terraform validate -no-color
 
     - name: Terraform Plan
-      secrets:
-      - AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      - AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       id: plan
       if: github.event_name == 'pull_request'
       working-directory: terraform
@@ -70,9 +70,9 @@ jobs:
       run: exit 1
 
     - name: Terraform Apply
-      secrets:
-      - AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
-      - AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+      env:
+        AWS_ACCESS_KEY_ID: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        AWS_SECRET_ACCESS_KEY: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
       if: github.ref == 'refs/heads/master' && github.event_name == 'push'
       working-directory: terraform
       run: terraform apply -auto-approve
