@@ -1,5 +1,5 @@
 IMAGE=klakegg/hugo:0.85.0-ext-debian
-BASE_URL=http://ryanmissett-blog-frontend.s3-website.eu-west-2.amazonaws.com/
+BASE_URL=https://d3cvuhrgx7tzue.cloudfront.net/
 POST_INDEX=$$(ls src/content/post | wc -l | awk '{print $1}' | xargs)
 POST_FILE=${POST_INDEX}-${POST}.md
 
