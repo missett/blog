@@ -33,12 +33,7 @@ locals {
 
 resource "aws_s3_bucket" "ryanmissett_blog_frontend" {
   bucket = "ryanmissett-blog-frontend"
-  acl    = "public-read"
-
-  website {
-    index_document = "index.html"
-    error_document = "404.html"
-  }
+  acl    = "private"
 }
 
 resource "aws_s3_bucket_object" "ryanmissett_blog_frontend" {
@@ -51,3 +46,20 @@ resource "aws_s3_bucket_object" "ryanmissett_blog_frontend" {
   etag         = filemd5("${path.module}/../static/src/public/${each.value}")
 }
 
+data "aws_iam_policy_document" "cloudfront_oai" {
+  statement {
+    effect = "Allow"
+    actions = ["s3:GetObject"]
+    resources = ["${aws_s3_bucket.ryanmissett_blog_frontend.arn}/*"]
+    
+    principals {
+      type = "AWS"
+      identifiers = [aws_cloudfront_origin_access_identity.ryanmissett_blog.iam_arn]
+    }
+  }
+}
+
+resource "aws_s3_bucket_policy" "cloudfront_oai" {
+  bucket = aws_s3_bucket.ryanmissett_blog_frontend.id
+  policy = data.aws_iam_policy_document.cloudfront_oai.json
+}
