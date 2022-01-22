@@ -6,6 +6,12 @@ resource "aws_cloudfront_origin_access_identity" "ryanmissett_blog" {
   
 }
 
+resource "aws_cloudfront_function" "ryanmissett_blog_index_redirect" {
+  name = "ryanmissett-blog-index-redirect"
+  runtime = "cloudfront-js-1.0"
+  code = file("${path.module}/cloudfront-index-redirect.js")
+}
+
 resource "aws_cloudfront_distribution" "ryanmissett_blog" {
   origin {
     domain_name = aws_s3_bucket.ryanmissett_blog_frontend.bucket_regional_domain_name
@@ -37,6 +43,11 @@ resource "aws_cloudfront_distribution" "ryanmissett_blog" {
     default_ttl = 300
     min_ttl = 300
     max_ttl = 300
+
+    function_association {
+      event_type = "viewer-request"
+      function_arn = aws_cloudfront_function.ryanmissett_blog_index_redirect.arn
+    }
   }
 
   custom_error_response {
