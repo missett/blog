@@ -48,12 +48,12 @@ resource "aws_s3_bucket_object" "ryanmissett_blog_frontend" {
 
 data "aws_iam_policy_document" "cloudfront_oai" {
   statement {
-    effect = "Allow"
-    actions = ["s3:GetObject"]
+    effect    = "Allow"
+    actions   = ["s3:GetObject"]
     resources = ["${aws_s3_bucket.ryanmissett_blog_frontend.arn}/*"]
-    
+
     principals {
-      type = "AWS"
+      type        = "AWS"
       identifiers = [aws_cloudfront_origin_access_identity.ryanmissett_blog.iam_arn]
     }
   }
