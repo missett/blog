@@ -22,7 +22,7 @@ jobs:
 
     - name: Build 
       working-directory: static/src
-      run: hugo --gc --minify --baseURL http://ryanmissett-blog-frontend.s3-website.eu-west-2.amazonaws.com/
+      run: hugo --gc --minify --baseURL https://d3cvuhrgx7tzue.cloudfront.net/
 
     - name: Terraform Format
       working-directory: terraform
