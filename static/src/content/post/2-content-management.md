@@ -30,7 +30,11 @@ Now we'll need to do some basic config of the site. The config file can be found
 
 Hugo has added a new theme system in a recent version. Instead of downloading the entire theme into your repo and committing it into source, we can give the config file a link to a git repo containing a Go module that implements a Hugo theme. This is brilliant since it helps us keep our own repo nice and slim. 
 
-NB. It's worth noting that this version of the Makefile does not include an important step when first creating the site. After we have run the above 'new site' command we need to run `docker run --rm -it -v `pwd`/src:/src klakegg/hugo:0.85.0-ext-debian mod init <site name>` in order to initialize our repo as a module, so that we can then use other modules, like our theme. If you run that command and then run a build, you'll end up with a go.mod and a go.sum file in your src folder. These should be committed into source control so that your builds always pull down the same versions of the theme (and any other modules you use). In a future version of the Makefile I'll automate this step.
+Let's initialize the Go module for the site- 
+```
+docker run --rm -it -v `pwd`/src:/src klakegg/hugo:0.85.0-ext-debian mod init my-site
+```
+If you run that command you'll end up with a go.mod and a go.sum file in your src folder. These files should be checked into source control and updates to them should be tracked so that the build process always uses the same versions of each of your modules.
 
 ### Viewing Our Site
 Let's tell Hugo to render our site locally for us so we can see what it looks like-
@@ -70,5 +74,7 @@ POST=hello-world make post
 ```
 
 That last command is probably the one that's most useful. It will create a new markdown file in the correct place in our repo, with the correct file name, prepending an integer index to the file name since I want my directory to be organised in order of the date I started writing the content. The command shown above would create a new post with the title hello-world.
+
+_NB. It's worth noting that this version of the Makefile does not include the docker command that generates the go.mod and go.sum files when running the `make site` command. This is a mistake on my part and one that I'll be fixing shortly._
 
 Well, that about covers an introduction into Hugo for now. It's not super complicated, but hopefully the use of Docker and a Makefile makes someones life easier. We now have a really simple way to manage content on our site. In the next post I think we'll be talking about how to get the content hosted somewhere (no guarantees though).
