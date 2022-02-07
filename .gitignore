@@ -1,3 +1,4 @@
 static/src/public
 .env
 .terraform
+*.zip
