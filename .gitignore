@@ -2,3 +2,4 @@ static/src/public
 .env
 .terraform
 *.zip
+node_modules
