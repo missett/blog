@@ -1,19 +1,19 @@
-data "archive_file" "ryanmissett_blog_hello_world" {
-  type        = "zip"
-  source_dir  = "${path.module}/../lambda/hello-world/src"
-  output_path = "${path.module}/../lambda/hello-world/build.zip"
-}
+module "javascript-lambda" {
+  for_each = {
+    hello_world = {
+      input_dir     = "hello-world"
+      iam_role_name = "ryanmissett_blog_lambda_hello_world"
+      function_name = "ryanmissett_blog_hello_world"
+    }
+    hello_again = {
+      input_dir     = "hello-again"
+      iam_role_name = "ryanmissett_blog_lambda_hello_world"
+      function_name = "ryanmissett_blog_hello_again"
+    }
+  }
 
-data "aws_iam_role" "ryanmissett_blog_lambda_hello_world" {
-  name = "ryanmissett_blog_lambda_hello_world"
-}
-
-resource "aws_lambda_function" "ryanmissett_blog_hello_world" {
-  depends_on       = [data.archive_file.ryanmissett_blog_hello_world]
-  filename         = "${path.module}/../lambda/hello-world/build.zip"
-  function_name    = "ryanmissett_blog_hello_world"
-  role             = data.aws_iam_role.ryanmissett_blog_lambda_hello_world.arn
-  handler          = "index.handler"
-  source_code_hash = data.archive_file.ryanmissett_blog_hello_world.output_sha
-  runtime          = "nodejs14.x"
+  source        = "../terraform-modules/javascript-lambda"
+  input_dir     = "${path.module}/../lambda/${each.value.input_dir}/src"
+  iam_role_name = each.value.iam_role_name
+  function_name = each.value.function_name
 }
