@@ -35,3 +35,7 @@ resource "aws_lambda_function" "function" {
   source_code_hash = data.archive_file.archive.output_sha
   runtime          = "nodejs${local.node_major_version}.x"
 }
+
+output "function" {
+  value = aws_lambda_function.function
+}
