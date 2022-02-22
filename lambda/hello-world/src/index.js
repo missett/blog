@@ -1,5 +1,5 @@
-const helloworld = require("./lib/hello-world");
+import { helloworld } from "./lib/hello-world";
 
-exports.handler = async function(event, context, callback) {
+export async function handler(/*event, context, callback*/) {
   return helloworld();
 }
