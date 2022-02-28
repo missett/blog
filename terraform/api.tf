@@ -18,38 +18,57 @@ module "javascript_lambda" {
   function_name = each.value.function_name
 }
 
-resource "aws_apigatewayv2_api" "gateway" {
-  name = "ryanmissett_blog_gateway"
-  protocol_type = "HTTP"
-
-  route_selection_expression = "$request.method $request.path"
-  api_key_selection_expression = "$request.header.x-api-key"
-  disable_execute_api_endpoint = false
+resource "aws_api_gateway_rest_api" "ryanmissett_blog_api" {
+  name = "ryanmissett_blog_api"
 }
 
-resource "aws_apigatewayv2_stage" "gateway_default_stage" {
-  api_id = aws_apigatewayv2_api.gateway.id
-  name = "$default"
-  auto_deploy = true
-  
-  route_settings {
-    route_key = "$default"
-    throttling_burst_limit = 1000
-    throttling_rate_limit = 1000
+resource "aws_api_gateway_resource" "ryanmissett_blog_api" {
+  path_part   = "hello_world"
+  parent_id   = aws_api_gateway_rest_api.ryanmissett_blog_api.root_resource_id
+  rest_api_id = aws_api_gateway_rest_api.ryanmissett_blog_api.id
+}
+
+resource "aws_api_gateway_method" "ryanmissett_blog_api_get" {
+  rest_api_id   = aws_api_gateway_rest_api.ryanmissett_blog_api.id
+  resource_id   = aws_api_gateway_resource.ryanmissett_blog_api.id
+  http_method   = "GET"
+  authorization = "NONE"
+}
+
+resource "aws_api_gateway_stage" "ryanmissett_blog_api_test" {
+  deployment_id = aws_api_gateway_deployment.ryanmissett_blog_api_test.id
+  rest_api_id   = aws_api_gateway_rest_api.ryanmissett_blog_api.id
+  stage_name    = "test"
+}
+
+resource "aws_api_gateway_deployment" "ryanmissett_blog_api_test" {
+  rest_api_id = aws_api_gateway_rest_api.ryanmissett_blog_api.id
+
+  triggers = {
+    #redeployment = sha1(jsonencode(aws_api_gateway_rest_api.example.body))
+    redeployment = timestamp()
+  }
+
+  lifecycle {
+    create_before_destroy = true
   }
 }
 
-resource "aws_apigatewayv2_integration" "hello_world" {
-  api_id = aws_apigatewayv2_api.gateway.id
-  integration_type = "AWS_PROXY"
-  integration_method = "POST"
-  integration_uri = module.javascript_lambda["hello_world"].function.invoke_arn
+resource "aws_api_gateway_integration" "integration" {
+  rest_api_id             = aws_api_gateway_rest_api.ryanmissett_blog_api.id
+  resource_id             = aws_api_gateway_resource.ryanmissett_blog_api.id
+  http_method             = aws_api_gateway_method.ryanmissett_blog_api_get.http_method
+  integration_http_method = "POST"
+  type                    = "AWS_PROXY"
+  uri                     = module.javascript_lambda["hello_world"].function.invoke_arn
 }
 
-resource "aws_apigatewayv2_route" "hello_world" {
-  api_id = aws_apigatewayv2_api.gateway.id
-  route_key = "ANY /"
-  target = "integrations/${aws_apigatewayv2_integration.hello_world.id}"
-  authorization_type = "NONE"
-}
+resource "aws_lambda_permission" "permission" {
+  statement_id  = "AllowExecutionFromAPIGateway"
+  action        = "lambda:InvokeFunction"
+  function_name = module.javascript_lambda["hello_world"].function.function_name
+  principal     = "apigateway.amazonaws.com"
 
+  # More: http://docs.aws.amazon.com/apigateway/latest/developerguide/api-gateway-control-access-using-iam-policies-to-invoke-api.html
+  source_arn = "arn:aws:execute-api:${local.region}:635451031443:${aws_api_gateway_rest_api.ryanmissett_blog_api.id}/*/${aws_api_gateway_method.ryanmissett_blog_api_get.http_method}${aws_api_gateway_resource.ryanmissett_blog_api.path}"
+}
